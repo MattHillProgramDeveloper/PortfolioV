@@ -1,9 +1,15 @@
 
 const elSchoolList = document.getElementById("schoollist")
-const url = "https://api.schooldigger.com/v1.2/rankings/schools/GA?appID=c570c8aa&appKey=54faff30e8a6aebeb6804c69379ebd23"
+const elStateCode = document.getElementById("stateCode")
+const urlFront = "https://api.schooldigger.com/v1.2/rankings/schools/"
+const urlBack = "?appID=c570c8aa&appKey=54faff30e8a6aebeb6804c69379ebd23"
 
 function findSchools() {
-    var xhttp = new XMLHttpRequest()
+    elSchoolList.innerHTML = ""
+    let stateId = elStateCode.value
+    let url = urlFront+stateId+urlBack
+    console.log(url)
+    let xhttp = new XMLHttpRequest()
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             
